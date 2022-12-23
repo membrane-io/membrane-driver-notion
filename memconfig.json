@@ -1,0 +1,296 @@
+{
+  "expressions": {
+    "block": {
+      "description": "Block",
+      "type": "text",
+      "searchIn": "https://www.notion.so",
+      "regex": "data-block-id=\"([0-9a-z-]+)\""
+    }
+  },
+  "schema": {
+    "types": [
+      {
+        "name": "Root",
+        "fields": [
+          {
+            "name": "blocks",
+            "type": "BlockCollection"
+          },
+          {
+            "name": "databases",
+            "type": "DatabaseCollection"
+          },
+          {
+            "name": "pages",
+            "type": "PageCollection"
+          },
+          {
+            "name": "users",
+            "type": "UserCollection"
+          },
+          {
+            "name": "parse",
+            "type": "List",
+            "ofType": {
+              "type": "Ref",
+              "ofType": "String"
+            },
+            "hints": { "hidden": true },
+            "params": [
+              {
+                "name": "name",
+                "type": "String"
+              },
+              {
+                "name": "value",
+                "type": "String"
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "name": "configure",
+            "type": "Void",
+            "params": [
+              {
+                "name": "token",
+                "type": "String"
+              }
+            ]
+          }
+        ],
+        "events": []
+      },
+      {
+        "name": "Block",
+        "fields": [
+          {
+            "name": "gref",
+            "type": "Ref",
+            "ofType": "Block"
+          },
+          {
+            "name": "created_time",
+            "type": "String"
+          },
+          {
+            "name": "has_children",
+            "type": "Boolean"
+          },
+          {
+            "name": "id",
+            "type": "String"
+          },
+          {
+            "name": "last_edited_time",
+            "type": "String"
+          },
+          {
+            "name": "object",
+            "type": "String"
+          },
+          {
+            "name": "paragraph",
+            "type": "String"
+          },
+          {
+            "name": "type",
+            "type": "String"
+          }
+        ],
+        "actions": [],
+        "events": []
+      },
+      {
+        "name": "Database",
+        "fields": [
+          {
+            "name": "gref",
+            "type": "Ref",
+            "ofType": "Database"
+          },
+          {
+            "name": "created_time",
+            "type": "String"
+          },
+          {
+            "name": "id",
+            "type": "String"
+          },
+          {
+            "name": "last_edited_time",
+            "type": "String"
+          },
+          {
+            "name": "object",
+            "type": "String"
+          },
+          {
+            "name": "properties",
+            "type": "String"
+          },
+          {
+            "name": "title",
+            "type": "List",
+            "ofType": {
+              "type": "String"
+            }
+          }
+        ],
+        "actions": [],
+        "events": []
+      },
+      {
+        "name": "Page",
+        "fields": [
+          {
+            "name": "gref",
+            "type": "Ref",
+            "ofType": "Page"
+          },
+          {
+            "name": "archived",
+            "type": "Boolean"
+          },
+          {
+            "name": "created_time",
+            "type": "String"
+          },
+          {
+            "name": "id",
+            "type": "String"
+          },
+          {
+            "name": "last_edited_time",
+            "type": "String"
+          },
+          {
+            "name": "object",
+            "type": "String"
+          },
+          {
+            "name": "parent",
+            "type": "String"
+          },
+          {
+            "name": "properties",
+            "type": "String"
+          }
+        ],
+        "actions": [],
+        "events": []
+      },
+      {
+        "name": "User",
+        "fields": [
+          {
+            "name": "gref",
+            "type": "Ref",
+            "ofType": "User"
+          },
+          {
+            "name": "avatar_url",
+            "type": "String"
+          },
+          {
+            "name": "id",
+            "type": "String"
+          },
+          {
+            "name": "name",
+            "type": "String",
+            "hints": {
+              "primary": true
+            }
+          },
+          {
+            "name": "object",
+            "type": "String"
+          },
+          {
+            "name": "person",
+            "type": "String"
+          },
+          {
+            "name": "type",
+            "type": "String"
+          }
+        ],
+        "actions": [],
+        "events": []
+      },
+      {
+        "name": "BlockCollection",
+        "fields": [
+          {
+            "name": "one",
+            "type": "Block",
+            "params": [
+              {
+                "name": "id",
+                "type": "String"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "events": []
+      },
+      {
+        "name": "DatabaseCollection",
+        "fields": [
+          {
+            "name": "one",
+            "type": "Database",
+            "params": [
+              {
+                "name": "id",
+                "type": "String"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "events": []
+      },
+      {
+        "name": "PageCollection",
+        "fields": [
+          {
+            "name": "one",
+            "type": "Page",
+            "params": [
+              {
+                "name": "id",
+                "type": "String"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "events": []
+      },
+      {
+        "name": "UserCollection",
+        "fields": [
+          {
+            "name": "one",
+            "type": "User",
+            "params": [
+              {
+                "name": "id",
+                "type": "String"
+              }
+            ]
+          }
+        ],
+        "actions": [],
+        "events": []
+      }
+    ]
+  },
+  "dependencies": {
+    "http": "http:"
+  }
+}
