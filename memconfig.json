@@ -11,6 +11,7 @@
     "types": [
       {
         "name": "Root",
+        "description": "Access your Notion.so data",
         "fields": [
           {
             "name": "blocks",
