@@ -2,7 +2,7 @@
 
 This [driver](https://membrane.io) lets you interact with the Notion.so API through your Membrane graph.
 
-To setup Notion driver follow steps:
+To setup Notion driver follow these steps:
 
 1: Create an [integration](https://www.notion.com/my-integrations)
 
