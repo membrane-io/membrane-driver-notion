@@ -30,6 +30,10 @@
             "type": "UserCollection"
           },
           {
+            "name": "status",
+            "type": "String"
+          },
+          {
             "name": "parse",
             "type": "List",
             "ofType": {

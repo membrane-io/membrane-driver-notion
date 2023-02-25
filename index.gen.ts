@@ -14,6 +14,13 @@ export const Root = {
   databases: () => ({}),
   pages: () => ({}),
   users: () => ({}),
+  status() {
+    if (!state.token) {
+      return `Please [configure the Notion API token](https://www.notion.so/Using-the-Official-Notion-API-3b4399debebc443aad399b948558c9d1)`;
+    } else {
+      return `Ready`;
+    }
+  },
   configure: ({ args: { token } }) => {
     state.token = token;
   },

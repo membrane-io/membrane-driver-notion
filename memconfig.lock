@@ -15,6 +15,93 @@
   },
   "imports": [
     {
+      "name": "sys-clock",
+      "schema": {
+        "types": [
+          {
+            "name": "Root",
+            "description": "",
+            "actions": [
+              {
+                "name": "sleep",
+                "description": "",
+                "type": "Void",
+                "params": [
+                  {
+                    "name": "key",
+                    "type": "String"
+                  },
+                  {
+                    "name": "seconds",
+                    "type": "Float"
+                  }
+                ],
+                "hints": {}
+              }
+            ],
+            "fields": [],
+            "events": [
+              {
+                "name": "timer",
+                "description": "",
+                "type": "TimerEvent",
+                "params": [
+                  {
+                    "name": "key",
+                    "type": "String"
+                  },
+                  {
+                    "name": "spec",
+                    "type": "String"
+                  },
+                  {
+                    "name": "maxCount",
+                    "type": "Int"
+                  }
+                ],
+                "hints": {}
+              },
+              {
+                "name": "timerAt",
+                "description": "",
+                "type": "TimerEvent",
+                "params": [
+                  {
+                    "name": "key",
+                    "type": "String"
+                  },
+                  {
+                    "name": "seconds",
+                    "type": "String"
+                  }
+                ],
+                "hints": {}
+              }
+            ]
+          },
+          {
+            "name": "TimerEvent",
+            "description": "",
+            "actions": [],
+            "fields": [
+              {
+                "name": "id",
+                "description": "",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              }
+            ],
+            "events": []
+          }
+        ],
+        "imports": []
+      },
+      "source": {
+        "Program": "tbd"
+      }
+    },
+    {
       "name": "http",
       "schema": {
         "types": [
@@ -178,6 +265,32 @@
         ],
         "imports": [
           {
+            "name": "sys-process",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "endpointUrl",
+                      "description": "Gets the program's own endpoint URL",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": "tbd"
+            }
+          },
+          {
             "name": "sys-http",
             "schema": {
               "types": [
@@ -323,32 +436,6 @@
             }
           },
           {
-            "name": "sys-process",
-            "schema": {
-              "types": [
-                {
-                  "name": "Root",
-                  "description": "",
-                  "actions": [],
-                  "fields": [
-                    {
-                      "name": "endpointUrl",
-                      "description": "Gets the program's own endpoint URL",
-                      "type": "String",
-                      "params": [],
-                      "hints": {}
-                    }
-                  ],
-                  "events": []
-                }
-              ],
-              "imports": []
-            },
-            "source": {
-              "Program": "tbd"
-            }
-          },
-          {
             "name": "sys-clock",
             "schema": {
               "types": [
@@ -434,95 +521,34 @@
             "source": {
               "Program": "tbd"
             }
-          }
-        ]
-      },
-      "source": {
-        "Program": "tbd"
-      }
-    },
-    {
-      "name": "sys-clock",
-      "schema": {
-        "types": [
-          {
-            "name": "Root",
-            "description": "",
-            "actions": [
-              {
-                "name": "sleep",
-                "description": "",
-                "type": "Void",
-                "params": [
-                  {
-                    "name": "key",
-                    "type": "String"
-                  },
-                  {
-                    "name": "seconds",
-                    "type": "Float"
-                  }
-                ],
-                "hints": {}
-              }
-            ],
-            "fields": [],
-            "events": [
-              {
-                "name": "timer",
-                "description": "",
-                "type": "TimerEvent",
-                "params": [
-                  {
-                    "name": "key",
-                    "type": "String"
-                  },
-                  {
-                    "name": "spec",
-                    "type": "String"
-                  },
-                  {
-                    "name": "maxCount",
-                    "type": "Int"
-                  }
-                ],
-                "hints": {}
-              },
-              {
-                "name": "timerAt",
-                "description": "",
-                "type": "TimerEvent",
-                "params": [
-                  {
-                    "name": "key",
-                    "type": "String"
-                  },
-                  {
-                    "name": "seconds",
-                    "type": "String"
-                  }
-                ],
-                "hints": {}
-              }
-            ]
           },
           {
-            "name": "TimerEvent",
-            "description": "",
-            "actions": [],
-            "fields": [
-              {
-                "name": "id",
-                "description": "",
-                "type": "String",
-                "params": [],
-                "hints": {}
-              }
-            ],
-            "events": []
+            "name": "sys-process",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "endpointUrl",
+                      "description": "Gets the program's own endpoint URL",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": "tbd"
+            }
           }
-        ],
-        "imports": []
+        ]
       },
       "source": {
         "Program": "tbd"
