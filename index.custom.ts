@@ -1,5 +1,4 @@
 import { root, state } from "membrane";
-import fetch from "node-fetch";
 
 export async function api(
   method: string,

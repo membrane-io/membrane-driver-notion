@@ -40,7 +40,9 @@
               "type": "Ref",
               "ofType": "String"
             },
-            "hints": { "hidden": true },
+            "hints": {
+              "hidden": true
+            },
             "params": [
               {
                 "name": "name",
@@ -183,7 +185,18 @@
             "type": "String"
           }
         ],
-        "actions": [],
+        "actions": [
+          {
+            "name": "appendBlock",
+            "type": "Void",
+            "params": [
+              {
+                "name": "children",
+                "type": "Json"
+              }
+            ]
+          }
+        ],
         "events": []
       },
       {

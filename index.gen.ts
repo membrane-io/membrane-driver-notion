@@ -1,13 +1,12 @@
 import { state, root, nodes } from "membrane";
-import fetch from "node-fetch";
 import {
   getItemsFromResponse,
   getNextPageRef,
   getSelfGref,
   api as _api,
 } from "./index.custom";
-async function api(method: string, path: string, query?: any, body?: string) {
-  _api(method, path, query, body);
+async function api(method: string, path: string, query?: any, body?: string): Promise<any> {
+  return _api(method, path, query, body);
 }
 export const Root = {
   blocks: () => ({}),
@@ -61,6 +60,11 @@ export const Page = {
     const val = obj["properties"];
     return typeof val === "string" ? val : JSON.stringify(val);
   },
+  appendBlock: async ({ args: { children }, self }) => {
+    const { id } = self.$argsAt(root.pages.one);
+    const res = await api("PATCH", `v1/blocks/${id}/children`, null, JSON.stringify(children));
+    return await res.json();
+  }
 };
 export const User = {
   gref: ({ obj, self }) => {
