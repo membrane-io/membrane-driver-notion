@@ -5,7 +5,12 @@ import {
   getSelfGref,
   api as _api,
 } from "./index.custom";
-async function api(method: string, path: string, query?: any, body?: string): Promise<any> {
+async function api(
+  method: string,
+  path: string,
+  query?: any,
+  body?: string
+): Promise<any> {
   return _api(method, path, query, body);
 }
 export const Root = {
@@ -20,28 +25,28 @@ export const Root = {
       return `Ready`;
     }
   },
-  configure: ({ args: { token } }) => {
+  configure: ({ token }) => {
     state.token = token;
   },
 };
 export const Block = {
-  gref: ({ obj, self }) => {
+  gref: (_, { obj, self }) => {
     return getSelfGref(obj, "Block", self);
   },
-  paragraph: async ({ obj }) => {
+  paragraph: async (_, { obj }) => {
     const val = obj["paragraph"];
     return typeof val === "string" ? val : JSON.stringify(val);
   },
 };
 export const Database = {
-  gref: ({ obj, self }) => {
+  gref: (_, { obj, self }) => {
     return getSelfGref(obj, "Database", self);
   },
-  properties: async ({ obj }) => {
+  properties: async (_, { obj }) => {
     const val = obj["properties"];
     return typeof val === "string" ? val : JSON.stringify(val);
   },
-  title: async ({ obj }) => {
+  title: async (_, { obj }) => {
     const items = obj["title"];
     if (items) {
       return items.map((e: any) => JSON.stringify(e));
@@ -49,56 +54,61 @@ export const Database = {
   },
 };
 export const Page = {
-  gref: ({ obj, self }) => {
+  gref: (_, { obj, self }) => {
     return getSelfGref(obj, "Page", self);
   },
-  parent: async ({ obj }) => {
+  parent: async (_, { obj }) => {
     const val = obj["parent"];
     return typeof val === "string" ? val : JSON.stringify(val);
   },
-  properties: async ({ obj }) => {
+  properties: async (_, { obj }) => {
     const val = obj["properties"];
     return typeof val === "string" ? val : JSON.stringify(val);
   },
-  appendBlock: async ({ args: { children }, self }) => {
+  appendBlock: async ({ children }, { self }) => {
     const { id } = self.$argsAt(root.pages.one);
-    const res = await api("PATCH", `v1/blocks/${id}/children`, null, JSON.stringify(children));
+    const res = await api(
+      "PATCH",
+      `v1/blocks/${id}/children`,
+      null,
+      JSON.stringify(children)
+    );
     return await res.json();
-  }
+  },
 };
 export const User = {
-  gref: ({ obj, self }) => {
+  gref: (_, { obj, self }) => {
     return getSelfGref(obj, "User", self);
   },
-  avatar_url: async ({ obj }) => {
+  avatar_url: async (_, { obj }) => {
     const val = obj["avatar_url"];
     return typeof val === "string" ? val : JSON.stringify(val);
   },
-  person: async ({ obj }) => {
+  person: async (_, { obj }) => {
     const val = obj["person"];
     return typeof val === "string" ? val : JSON.stringify(val);
   },
 };
 export const BlockCollection = {
-  one: async ({ args }) => {
+  one: async (args) => {
     const res = await api("GET", `v1/blocks/${args.id}`);
     return await res.json();
   },
 };
 export const DatabaseCollection = {
-  one: async ({ args }) => {
+  one: async (args) => {
     const res = await api("GET", `v1/databases/${args.id}`);
     return await res.json();
   },
 };
 export const PageCollection = {
-  one: async ({ args }) => {
+  one: async (args) => {
     const res = await api("GET", `v1/pages/${args.id}`);
     return await res.json();
   },
 };
 export const UserCollection = {
-  one: async ({ args }) => {
+  one: async (args) => {
     const res = await api("GET", `v1/users/${args.id}`);
     return await res.json();
   },
