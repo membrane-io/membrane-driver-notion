@@ -28,6 +28,24 @@ export const Root = {
   configure: ({ token }) => {
     state.token = token;
   },
+  tests: () => ({}),
+};
+export const Tests = {
+  testSearchEndpoint: async () => {
+    const res = await api(
+      "POST",
+      "v1/search",
+      null,
+      JSON.stringify({
+        filter: {
+          value: "page",
+          property: "object",
+        },
+      })
+    );
+    const items = await res.json();
+    return Array.isArray(items.results);
+  },
 };
 export const Block = {
   gref: (_, { obj, self }) => {
